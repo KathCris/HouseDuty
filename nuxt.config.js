@@ -28,7 +28,8 @@ export default {
     '@/assets/css/pagePrincipal.css',
     '@/assets/css/cardAppointments.css',
     '@/assets/css/bodyPage.css',
-    '@/assets/css/tableRules.css'
+    '@/assets/css/tableRules.css',
+    '@/assets/css/pageConstruction.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

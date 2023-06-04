@@ -1,0 +1,18 @@
+
+
+.invoPageConstruction{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.invoPageConstruction h3{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--primary-black);
+}
+
+.invoPageConstruction img{
+    width: 50%;
+}

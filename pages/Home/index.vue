@@ -1,12 +1,14 @@
 <template>
   <div class="flexSup">
     <NavBar />
-    <!-- <ModalActions /> -->
     <div class="flexSup invoBody">
       <HeaderNav />
-      <div class="flexSup invoLineBody">
+      <div v-if="true" class="flexSup invoLineBody">
         <BodyPage />
         <CardAppointments />
+      </div>
+      <div v-if="false" class="flexSup invoLineBody">
+        <PageStart />
       </div>
     </div>
   </div>
@@ -17,12 +19,12 @@ import NavBar from '../../components/NavBar.vue'
 import HeaderNav from '../../components/HeaderNav.vue'
 import BodyPage from '../../components/BodyPage.vue'
 import CardAppointments from '../../components/CardAppointments.vue'
-// import ModalActions from '../../components/ModalActions.vue'
+import PageStart from '../../components/PageStart.vue'
 
 export default {
   name: 'Home',
 
-  components: { NavBar, HeaderNav, BodyPage, CardAppointments },
+  components: { NavBar, HeaderNav, BodyPage, CardAppointments, PageStart },
   data () {
     return {
 
