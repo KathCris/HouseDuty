@@ -1,6 +1,7 @@
 <template>
   <div class="flexSup">
     <NavBar />
+    <!-- <ModalActions /> -->
     <div class="flexSup invoBody">
       <HeaderNav />
       <div class="flexSup invoLineBody">
@@ -16,6 +17,7 @@ import NavBar from '../../components/NavBar.vue'
 import HeaderNav from '../../components/HeaderNav.vue'
 import BodyPage from '../../components/BodyPage.vue'
 import CardAppointments from '../../components/CardAppointments.vue'
+// import ModalActions from '../../components/ModalActions.vue'
 
 export default {
   name: 'Home',

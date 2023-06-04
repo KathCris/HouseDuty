@@ -1,0 +1,87 @@
+
+
+.invoTableRules{
+    width: 100%;
+
+    margin: 24px 0px ;
+    flex-direction: column;
+}
+
+
+.table th, .table td {
+    text-align: center;
+}
+
+
+.buttonTableEditDelete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    color: var(--primary-black);
+    border: var(--primary-black) solid 2px;
+    border-radius: 4px;
+    background: #fff;
+
+    margin-right: 8px;
+}
+.buttonTableEditDelete:last-child{
+    margin-right: 0px;
+}
+.buttonTableEditDelete span{
+    height: min-content;
+    width: min-content;
+}
+
+.buttonTableEditDelete:hover {
+    color: var(--primary-green);
+    border: var(--primary-green) solid 2px;
+    background: var(--background-gray);
+}
+.buttonTableEditDelete:hover *{
+    color: var(--primary-green);
+}
+
+.invoButtonsTable{
+    align-items: center;
+    justify-content: center;
+}
+
+/* tags */
+
+.tagAtivo{
+    color: var(--second-green);
+    background: #DEEDE5;
+    border: none;
+}
+
+.tagAtivo:hover{
+    cursor: default;
+}
+.tagInativo{
+    color: var(--primary-black);
+    background: var(--primary-gray-ligth);
+    border: none;
+    cursor: default;
+}
+.tagInativo:hover{
+    cursor: default;
+}
+
+
+.fotterTable{
+    justify-content: center;
+    padding: 8px;
+
+    background-color: var(--background-gray);
+
+    align-items: center;
+}
+
+.page-link{
+    color: var(--primary-black);
+}
+.page-item.active .page-link{
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
