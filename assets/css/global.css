@@ -28,6 +28,10 @@
     font-family: Manrope-Light;
     src: url('../fonts/Manrope-Light.ttf');
   }
+@font-face {
+    font-family: Manrope-Regular;
+    src: url('../fonts/Manrope-Regular.ttf');
+  }
 
 /* Classes gerais */
 

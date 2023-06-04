@@ -1,9 +1,11 @@
 
 .invoCardAp{
-    width: max-content;
+    width: 30%;
     height: 100%;
 
     padding: 24px 0px;
+
+    /* margin: 0 32px; */
 
 }
 

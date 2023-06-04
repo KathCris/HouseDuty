@@ -1,0 +1,100 @@
+
+.invoBodyPage {
+    flex-direction: column;
+
+    padding: 32px;
+}
+
+.invoBodyPage h2{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--primary-black);
+
+    margin-bottom: 16px;
+}
+
+/* Big numbers */
+
+.invoCardsRulesAp{
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+.textBigNumbers{
+    flex-direction: column;
+    justify-content: center;
+
+    position: absolute;
+
+    padding: 16px 8px 8px 8px;
+}
+.textBigNumbers h4{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    
+    margin-bottom: 8px;
+}
+.textBigNumbers p{
+    font-family: 'Manrope-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* RULES */
+
+.invoRulesHouse{
+    align-items: center;
+}
+
+.textRule{
+    flex-direction: column;
+    
+    padding-right: 16px;
+}
+
+.textRule h1{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--primary-black);
+
+    margin-bottom: 16px;
+}
+
+.textRule p{
+    font-family: 'Manrope-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--primary-black);
+}
+
+.buttonCreatRules {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+
+    width: 30%;
+    height: min-content;
+
+    color: var(--primary-black);
+    border: var(--primary-black) solid 2px;
+    border-radius: 4px;
+    background: #fff;
+
+    
+}
+
+.buttonCreatRules:hover {
+    color: var(--primary-green);
+    border: var(--primary-green) solid 2px;
+    background: var(--background-gray);
+}
+.buttonCreatRules:hover *{
+    color: var(--primary-green);
+}

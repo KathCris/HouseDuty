@@ -26,7 +26,8 @@ export default {
     '@/assets/css/navBar.css',
     '@/assets/css/header.css',
     '@/assets/css/pagePrincipal.css',
-    '@/assets/css/cardAppointments.css'
+    '@/assets/css/cardAppointments.css',
+    '@/assets/css/bodyPage.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
