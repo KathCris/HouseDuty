@@ -15,14 +15,16 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/global.css',
-    '@/assets/css/navBar.css'
+    '@/assets/css/navBar.css',
+    '@/assets/css/header.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
