@@ -1,0 +1,28 @@
+/* Catalogo de cores */
+
+
+
+/* Imports de fontes */
+
+
+@font-face {
+    font-family: Manrope-Bold;
+    src: url('../fonts/Manrope-Bold.ttf');
+    /* font-weight: bold; */
+  }
+@font-face {
+    font-family: Manrope-ExtraBold;
+    src: url('../fonts/Manrope-ExtraBold.ttf');
+    /* font-weight: bold; */
+  }
+@font-face {
+    font-family: Manrope-Bold;
+    src: url('../fonts/Manrope-Bold.ttf');
+    /* font-weight: bold; */
+  }
+
+/* Classes gerais */
+
+.flexSup{
+    display: flex;
+}
