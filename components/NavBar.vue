@@ -62,9 +62,7 @@ export default {
     ...mapActions(['changeStatePage']),
 
     changePage (pageActual) {
-      console.log(pageActual)
       this.$store.commit('changeStatePage', pageActual)
-      console.log(this.statePage)
     }
   }
 }

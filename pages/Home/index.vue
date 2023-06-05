@@ -29,15 +29,33 @@ export default {
   components: { NavBar, HeaderNav, BodyPage, CardAppointments, PageStart },
   data () {
     return {
-
+      token: '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
     }
   },
   computed: {
     ...mapState(['statePage'])
   },
-  methods: {
-    ...mapActions(['teste'])
+  mounted () {
+    this.fristAcess()
 
+    // this.listRules()
+  },
+  methods: {
+    ...mapActions(['teste']),
+
+    fristAcess () {
+      this.$store.commit('changeStatePage', 'home')
+    }
+
+    // async listRules () {
+    //   console.log('floasnasncasl.')
+    //   await this.$axios.get('https://sys-dev.searchandstay.com/api/admin/house_rules', {
+    //     headers: { Authorization: `Bearer ${this.token}` }
+    //   })
+    //     .then((response) => {
+    //       console.log(response.data.data)
+    //     })
+    // }
   }
 }
 </script>

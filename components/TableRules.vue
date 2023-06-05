@@ -1,12 +1,22 @@
 <template>
   <div class="flexSup invoTableRules">
-    <b-table style="width: 100%; margin-bottom: 0px!important;" :items="items" :fields="fields" striped sticky-header>
+    <b-table
+      style="width: 100%; margin-bottom: 0px!important;"
+      :items="items"
+      :fields="fields"
+      striped
+      sticky-header
+    >
+      <!-- status de ativo ou inativo -->
+      <!-- <template #cell(Name)>
+        <p> {{ items[0].name }} </p>
+      </template> -->
       <!-- status de ativo ou inativo -->
       <template #cell(Status)>
-        <button class="tagAtivo">
+        <button v-if="items.active === 1" class="tagAtivo">
           Ativo
         </button>
-        <button class="tagInativo">
+        <button v-if="items.active === 0" class="tagInativo">
           Inativo
         </button>
       </template>
@@ -38,20 +48,39 @@ export default {
   data () {
     return {
       fields: ['Name', 'Status', 'show_details'],
-      items: [
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' },
-        { Name: 'Lavar a louça' }
-      ],
+      items: [],
+      // items: [
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' },
+      //   { Name: 'Lavar a louça' }
+      // ],
       rows: 100,
-      currentPage: 1
+      currentPage: 1,
+      token: '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
+    }
+  },
+  mounted () {
+    this.listRules()
+  },
+  methods: {
+
+    async listRules () {
+      await this.$axios.get('https://sys-dev.searchandstay.com/api/admin/house_rules', {
+        headers: { Authorization: `Bearer ${this.token}` }
+      })
+        .then((response) => {
+          console.log('dadeda', response.data.data.entities)
+          this.items = response.data.data.entities
+          console.log(this.items)
+          console.log('this.items.name', this.items[0].name)
+        })
     }
   }
 }
