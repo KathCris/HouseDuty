@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 import NavBar from '../../components/NavBar.vue'
 import HeaderNav from '../../components/HeaderNav.vue'
 import BodyPage from '../../components/BodyPage.vue'
@@ -29,6 +31,13 @@ export default {
     return {
 
     }
+  },
+  computed: {
+    ...mapState(['teste'])
+  },
+  methods: {
+    ...mapActions(['teste'])
+
   }
 }
 </script>
