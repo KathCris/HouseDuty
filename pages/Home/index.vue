@@ -3,11 +3,11 @@
     <NavBar />
     <div class="flexSup invoBody">
       <HeaderNav />
-      <div v-if="true" class="flexSup invoLineBody">
+      <div v-if="statePage === 'home'" class="flexSup invoLineBody">
         <BodyPage />
         <CardAppointments />
       </div>
-      <div v-if="false" class="flexSup invoLineBody">
+      <div v-if="statePage !== 'home'" class="flexSup invoLineBody">
         <PageStart />
       </div>
     </div>
@@ -33,7 +33,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['teste'])
+    ...mapState(['statePage'])
   },
   methods: {
     ...mapActions(['teste'])

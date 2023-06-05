@@ -1,10 +1,15 @@
 export const state = () => ({
-  teste: false
+  teste: false,
+  statePage: ''
 })
 
 export const mutations = {
   teste (state) {
     state.teste = !state.teste
+  },
+
+  changeStatePage (state, payload) {
+    state.statePage = payload
   }
 
 }
