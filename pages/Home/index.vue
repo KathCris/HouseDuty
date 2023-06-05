@@ -37,8 +37,6 @@ export default {
   },
   mounted () {
     this.fristAcess()
-
-    // this.listRules()
   },
   methods: {
     ...mapActions(['teste']),
@@ -46,16 +44,6 @@ export default {
     fristAcess () {
       this.$store.commit('changeStatePage', 'home')
     }
-
-    // async listRules () {
-    //   console.log('floasnasncasl.')
-    //   await this.$axios.get('https://sys-dev.searchandstay.com/api/admin/house_rules', {
-    //     headers: { Authorization: `Bearer ${this.token}` }
-    //   })
-    //     .then((response) => {
-    //       console.log(response.data.data)
-    //     })
-    // }
   }
 }
 </script>

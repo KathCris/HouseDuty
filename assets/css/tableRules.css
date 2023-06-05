@@ -3,7 +3,7 @@
 .invoTableRules{
     width: 100%;
 
-    margin: 24px 0px ;
+    /* margin: 24px 0px ; */
     flex-direction: column;
 }
 
@@ -53,6 +53,7 @@
     color: var(--second-green);
     background: #DEEDE5;
     border: none;
+    border-radius: 8px;
 }
 
 .tagAtivo:hover{
@@ -63,6 +64,7 @@
     background: var(--primary-gray-ligth);
     border: none;
     cursor: default;
+    border-radius: 8px;
 }
 .tagInativo:hover{
     cursor: default;
@@ -84,4 +86,57 @@
 .page-item.active .page-link{
     background-color: var(--primary-green);
     border-color: var(--primary-green);
+}
+
+
+.invoTable{
+    flex-direction: column;
+    width: 100%;
+
+    background-color: var(--background-gray);
+
+    border-radius: 8px;
+
+    /* margin: 24px 0px; */
+}
+
+
+.headerTable{
+    justify-content: space-around;
+
+    background-color: #F7F7F7;
+    border-radius: 8px 8px 0px 0px;
+    padding: 8px 0;
+}
+
+.headerTable h3{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--primary-black);
+}
+.invoLineTable{
+   flex-direction: column;
+
+}
+
+.lineTable{
+    justify-content: space-around;
+    padding: 8px 0;
+    border-bottom: 1px solid #dddddd;
+
+}
+
+.lineTable p{
+    font-family: 'Manrope-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--primary-black);
+}
+
+.textH3NameTable{
+    width: 26%;
+}
+.textPTable{
+    width: 30%;
 }
