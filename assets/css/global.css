@@ -1,0 +1,52 @@
+/* Catalogo de cores */
+
+:root {
+  --background-gray: #F2F2F2;
+  --primary-green: #B4CD93;
+  --second-green: #427A5B;
+  --primary-black: #4C4C4C;
+  --primary-gray-ligth: #B3B3B3;
+}
+
+
+/* Imports de fontes */
+
+
+@font-face {
+    font-family: Manrope-Bold;
+    src: url('../fonts/Manrope-Bold.ttf');
+  }
+@font-face {
+    font-family: Manrope-ExtraBold;
+    src: url('../fonts/Manrope-ExtraBold.ttf');
+  }
+@font-face {
+    font-family: Manrope-Medium;
+    src: url('../fonts/Manrope-Medium.ttf');
+  }
+@font-face {
+    font-family: Manrope-Light;
+    src: url('../fonts/Manrope-Light.ttf');
+  }
+@font-face {
+    font-family: Manrope-Regular;
+    src: url('../fonts/Manrope-Regular.ttf');
+  }
+
+/* Classes gerais */
+
+.flexSup{
+    display: flex;
+}
+
+.directionColumn{
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5{
+  margin-bottom: 0px;
+}
+
+p{
+  margin-bottom: 0px;
+}

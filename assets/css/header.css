@@ -1,0 +1,57 @@
+
+
+.invoHeader{
+    width: 100%;
+    height: fit-content;
+    background-color: var(--background-gray);
+
+    justify-content: end;
+    padding: 8px 32px;
+
+    align-items: center;
+}
+
+
+.invoHeader span{
+    color: var(--primary-gray-ligth);
+ 
+    height: min-content;
+ }
+.invoHeader span:hover{
+    color: var(--primary-green);
+    cursor: pointer;
+ }
+
+
+.invoProfile img{
+    display: flex;
+    width: 38px;
+    height: 38px;
+
+    margin-right: 8px;
+}
+.invoProfile{
+    justify-content: end;
+    align-items: center;
+
+}
+
+
+.invoTextPerfil{
+    flex-direction: column;
+    margin-right: 16px;
+}
+
+.invoTextPerfil h5{
+    font-family: 'Manrope-Medium';
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--primary-black);
+}
+
+.invoTextPerfil p{
+    font-family: 'Manrope-Light';
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--primary-gray-ligth);
+}

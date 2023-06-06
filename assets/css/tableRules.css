@@ -1,0 +1,215 @@
+
+
+.invoTableRules{
+    width: 100%;
+
+    /* margin: 24px 0px ; */
+    flex-direction: column;
+}
+
+
+.table th, .table td {
+    text-align: center;
+}
+
+
+.buttonTableEditDelete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    color: var(--primary-black);
+    border: var(--primary-black) solid 2px;
+    border-radius: 4px;
+    background: #fff;
+
+    margin-right: 8px;
+}
+.buttonTableEditDelete:last-child{
+    margin-right: 0px;
+}
+.buttonTableEditDelete span{
+    height: min-content;
+    width: min-content;
+}
+
+.buttonTableEditDelete:hover {
+    color: var(--primary-green);
+    border: var(--primary-green) solid 2px;
+    background: var(--background-gray);
+}
+.buttonTableEditDelete:hover *{
+    color: var(--primary-green);
+}
+
+.invoButtonsTable{
+    align-items: center;
+    justify-content: center;
+}
+
+/* tags */
+
+.tagAtivo{
+    color: var(--second-green);
+    background: #DEEDE5;
+    border: none;
+    border-radius: 8px;
+}
+
+.tagAtivo:hover{
+    cursor: default;
+}
+.tagInativo{
+    color: var(--primary-black);
+    background: var(--primary-gray-ligth);
+    border: none;
+    cursor: default;
+    border-radius: 8px;
+}
+.tagInativo:hover{
+    cursor: default;
+}
+
+
+.page-link{
+    color: var(--primary-black);
+}
+.page-item.active .page-link{
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+
+.invoTable{
+    flex-direction: column;
+    width: 100%;
+
+    background-color: var(--background-gray);
+
+    border-radius: 8px;
+
+    /* margin: 24px 0px; */
+}
+
+
+.headerTable{
+    justify-content: space-around;
+
+    background-color: #F7F7F7;
+    border-radius: 8px 8px 0px 0px;
+    padding: 8px 0;
+}
+
+.headerTable h3{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--primary-black);
+}
+.invoLineTable{
+   flex-direction: column;
+
+}
+
+.lineTable{
+    justify-content: space-around;
+    padding: 8px 0;
+    border-bottom: 1px solid #dddddd;
+
+}
+
+.lineTable p{
+    font-family: 'Manrope-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--primary-black);
+}
+
+.textH3NameTable{
+    width: 26%;
+}
+.textPTable{
+    width: 30%;
+}
+
+
+/* Pagination */
+
+.fotterTable{
+    justify-content: center;
+    padding: 16px;
+
+    background-color: var(--background-gray);
+
+    align-items: center;
+
+    border-radius: 0px 0px 8px 8px;
+
+    padding-right: 8%;
+
+}
+
+.invoPagination p{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--primary-black);
+
+    display: flex;
+    align-items: center;
+
+    margin-right: 16px;
+}
+
+.btnNavigate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    color: var(--primary-black);
+    border: var(--primary-black) solid 2px;
+    /* border: none; */
+    border-radius: 4px;
+    background: #fff;
+    margin-right: 16px;
+}
+.btnNavigate:last-child{
+    margin-right: 0px;
+}
+
+.btnNavigate:hover {
+    color: var(--primary-green);
+    border: var(--primary-green) solid 2px;
+    background: var(--background-gray);
+}
+.btnNavigate:hover *{
+    color: var(--primary-green);
+}
+
+/* trava no btn */
+
+.btnNavigateTrava{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    color: var(--primary-gray-ligth);
+    border: var(--primary-gray-ligth) solid 2px;
+    /* border: none; */
+    border-radius: 4px;
+    background: #fff;
+    margin-right: 16px;
+}
+.btnNavigateTrava:last-child{
+    margin-right: 0px;
+}
+
+.btnNavigateTrava:hover {
+    color: var(--primary-gray-ligth);
+    border: var(--primary-gray-ligth) solid 2px;
+    /* background: var(--background-gray); */
+    cursor: default;
+}
+.btnNavigateTrava:hover *{
+    color: var(--primary-gray-ligth);
+}
