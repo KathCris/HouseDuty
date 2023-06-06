@@ -50,3 +50,12 @@
 .centerlizer{
     justify-content: center;
 }
+
+
+@media (max-width: 1920px) {
+    
+    .invoCardAp{
+        justify-content: center;
+        width: 20%;
+    }
+}

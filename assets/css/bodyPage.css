@@ -100,3 +100,15 @@
 .buttonCreatRules:hover *{
     color: var(--primary-green);
 }
+
+
+@media (max-width: 1920px) {
+    
+    .invoBodyPage{
+        width: 80%;
+    }
+
+    .invoRulesHouse{
+        justify-content: space-between;
+    }
+}
