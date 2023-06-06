@@ -52,7 +52,7 @@
           >
             <b-form-input
               id="name-input"
-              v-model="nameTeste2"
+              v-model="nameRule"
               :state="nameState"
               required
             />
@@ -63,7 +63,7 @@
             invalid-feedback="Campo obrigatorio"
             :state="statusSelect"
           >
-            <b-form-select v-model="selected" :options="options" size="sm" class="mt-3" />
+            <b-form-select v-model="selectedActive" :options="options" size="sm" class="mt-3" />
           </b-form-group>
         </form>
       </b-modal>
@@ -83,51 +83,65 @@ export default {
   data () {
     return {
       testeRender: false,
-      nameTeste2: '',
+      nameRule: '',
       nameState: null,
       statusSelect: null,
       submittedNames: [],
       // SELECT
-      selected: null,
+      selectedActive: null,
       options: [
         { value: null, text: 'Selecione uma opção' },
         { value: '1', text: 'Ativo' },
         { value: '0', text: 'Inativo' }
       ],
       // title
-      titleModal: 'Criação das regras'
+      titleModal: 'Criação das regras',
+      token: '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
     }
   },
   computed: {
     ...mapState(['qtdRules'])
   },
   methods: {
+
     checkFormValidity () {
       const valid = this.$refs.form.checkValidity()
       this.nameState = valid
       return valid
     },
     resetModal () {
-      this.nameTeste2 = ''
+      this.nameRule = ''
       this.nameState = null
     },
     handleOk (bvModalEvent) {
-      // Prevent modal from closing
       bvModalEvent.preventDefault()
-      // Trigger submit handler
       this.handleSubmit()
     },
     handleSubmit () {
-      // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return
       }
-      // Push the name to submitted names
-      this.submittedNames.push(this.nameTeste2)
-      // Hide the modal manually
+
+      alert('Tem certeza que deseja criar uma regra?')
+      this.createRule()
+
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing')
       })
+    },
+    async createRule () {
+      const data = {
+        house_rules: {
+          name: this.nameRule,
+          active: this.selectedActive
+        }
+      }
+      await this.$axios.post('https://sys-dev.searchandstay.com/api/admin/house_rules', data, {
+        headers: { Authorization: `Bearer ${this.token}` }
+      })
+        .then((response) => {
+          window.location.reload()
+        })
     }
   }
 }
