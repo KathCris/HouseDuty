@@ -12,7 +12,7 @@
       <div class="flexSup">
         <img src="../assets/img/17-athletics.png" alt="">
         <div class="flexSup textBigNumbers">
-          <h4>14</h4>
+          <h4>1</h4>
           <p>Compromissos da semana</p>
         </div>
       </div>

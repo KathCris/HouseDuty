@@ -42,14 +42,14 @@
     </div>
     <div class="flexSup fotterTable">
       <div class="flexSup invoPagination">
-        <p>Página {{ currentPage }} de {{ qtdPages }} </p>
+        <p>Página {{ pageActual }} de {{ qtdPages }} </p>
         <div class="flexSup pagination">
-          <button class="btnNavigate">
+          <button :class="{'btnNavigate': !travaBtnBack, 'btnNavigateTrava': travaBtnBack}" @click="backPage()">
             <span class="material-icons">
               chevron_left
             </span>
           </button>
-          <button class="btnNavigate">
+          <button :class="{'btnNavigate': !travaBtnNext, 'btnNavigateTrava': travaBtnNext}" @click="nextPage()">
             <span class="material-icons">
               navigate_next
             </span>
@@ -138,7 +138,6 @@ export default {
   // name: 'TableRules',
   data () {
     return {
-      qtdPages: null,
       qtdRulesLocal: 0,
       idRule: null,
       idDeleteRule: null,
@@ -152,8 +151,11 @@ export default {
       submittedInput: [],
       // table
       items: [],
-      rows: 100,
+      pageActual: 1,
+      qtdPages: 0,
       currentPage: 1,
+      travaBtnBack: true,
+      travaBtnNext: false,
       token: '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8',
       // SELECT
       selected: null,
@@ -190,6 +192,59 @@ export default {
 
     commitShowQtdRules () {
       this.$store.commit('showQtdRules', this.qtdRulesLocal)
+    },
+
+    async nextPage () {
+      if (this.pageActual === this.qtdPages) {
+        this.pageActual = this.qtdPages
+        this.travaBtnNextAndBackPage()
+      } else {
+        this.showTable = false
+        this.pageActual += 1
+
+        this.travaBtnNextAndBackPage()
+
+        await this.$axios.get(`https://sys-dev.searchandstay.com/api/admin/house_rules?page=${this.pageActual}`, {
+          headers: { Authorization: `Bearer ${this.token}` }
+        })
+          .then((response) => {
+            this.items = response.data.data.entities
+
+            this.showTable = true
+          })
+      }
+    },
+
+    async backPage () {
+      if (this.pageActual <= 1) {
+        this.pageActual = 1
+        this.travaBtnNextAndBackPage()
+      } else {
+        this.showTable = false
+        this.pageActual -= 1
+        this.travaBtnNextAndBackPage()
+
+        await this.$axios.get(`https://sys-dev.searchandstay.com/api/admin/house_rules?page=${this.pageActual}`, {
+          headers: { Authorization: `Bearer ${this.token}` }
+        })
+          .then((response) => {
+            this.items = response.data.data.entities
+
+            this.showTable = true
+          })
+      }
+    },
+    travaBtnNextAndBackPage () {
+      if (this.pageActual === 1) {
+        this.travaBtnBack = true
+        this.travaBtnNext = false
+      } else if (this.pageActual === this.qtdPages) {
+        this.travaBtnBack = false
+        this.travaBtnNext = true
+      } else {
+        this.travaBtnBack = false
+        this.travaBtnNext = false
+      }
     },
 
     async findRule (idRuleAtual) {

@@ -185,3 +185,31 @@
 .btnNavigate:hover *{
     color: var(--primary-green);
 }
+
+/* trava no btn */
+
+.btnNavigateTrava{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    color: var(--primary-gray-ligth);
+    border: var(--primary-gray-ligth) solid 2px;
+    /* border: none; */
+    border-radius: 4px;
+    background: #fff;
+    margin-right: 16px;
+}
+.btnNavigateTrava:last-child{
+    margin-right: 0px;
+}
+
+.btnNavigateTrava:hover {
+    color: var(--primary-gray-ligth);
+    border: var(--primary-gray-ligth) solid 2px;
+    /* background: var(--background-gray); */
+    cursor: default;
+}
+.btnNavigateTrava:hover *{
+    color: var(--primary-gray-ligth);
+}

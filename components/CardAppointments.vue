@@ -8,7 +8,7 @@
         <p>Limpar a casa</p>
       </div>
 
-      <button class="flexSup buttonNavBarSelected centerlizer">
+      <button class="flexSup buttonNavBarSelected centerlizer" @click="changePage('compromissos')">
         Ir para compromissos
       </button>
     </div>
@@ -16,12 +16,25 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'CardAppointments',
   data () {
     return {
 
     }
+  },
+  computed: {
+    ...mapState(['statePage'])
+  },
+  methods: {
+    ...mapActions(['changeStatePage']),
+
+    changePage (pageActual) {
+      this.$store.commit('changeStatePage', pageActual)
+    }
   }
 }
+
 </script>
