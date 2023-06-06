@@ -179,7 +179,6 @@ export default {
 
     getToken () {
       this.token = Cookie.get('token')
-      console.log('this.token = tableRules', this.token)
     },
 
     async listRules () {
