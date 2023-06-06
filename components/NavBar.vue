@@ -8,19 +8,19 @@
     </div>
     <div class="flexSup directionColumn invoButtonsNav">
       <div class="flexSup directionColumn">
-        <button class="flexSup buttonNavBarSelected" @click="changePage('home')">
+        <button :class="{ 'flexSup': true, 'buttonNavBarSelected': statePage === 'home', 'buttonNavBar': statePage !== 'home' }" @click="changePage('home')">
           <span class="material-icons">
             grid_view
           </span>
           Home
         </button>
-        <button class="flexSup buttonNavBar" @click="changePage('compromissos')">
+        <button :class="{ 'flexSup': true, 'buttonNavBarSelected': statePage === 'compromissos', 'buttonNavBar': statePage !== 'compromissos' }" @click="changePage('compromissos')">
           <span class="material-icons">
             person
           </span>
           Compromissos
         </button>
-        <button class="flexSup buttonNavBar" @click="changePage('projetos')">
+        <button :class="{ 'flexSup': true, 'buttonNavBarSelected': statePage === 'projetos', 'buttonNavBar': statePage !== 'projetos' }" @click="changePage('projetos')">
           <span class="material-icons">
             image
           </span>
@@ -29,7 +29,7 @@
       </div>
       <!-- Rodapé -->
       <div class="flexSup directionColumn">
-        <button class="flexSup buttonNavBar" @click="changePage('settings')">
+        <button :class="{ 'flexSup': true, 'buttonNavBarSelected': statePage === 'settings', 'buttonNavBar': statePage !== 'settings' }" @click="changePage('settings')">
           <span class="material-icons">
             settings
           </span>

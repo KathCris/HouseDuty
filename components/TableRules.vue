@@ -41,7 +41,21 @@
       </div>
     </div>
     <div class="flexSup fotterTable">
-      <b-pagination v-model="currentPage" pills :total-rows="rows" style="margin-bottom: 0px!important;" />
+      <div class="flexSup invoPagination">
+        <p>Página {{ currentPage }} de {{ qtdPages }} </p>
+        <div class="flexSup pagination">
+          <button class="btnNavigate">
+            <span class="material-icons">
+              chevron_left
+            </span>
+          </button>
+          <button class="btnNavigate">
+            <span class="material-icons">
+              navigate_next
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- MODAL EDICAO -->
@@ -124,6 +138,7 @@ export default {
   // name: 'TableRules',
   data () {
     return {
+      qtdPages: null,
       qtdRulesLocal: 0,
       idRule: null,
       idDeleteRule: null,
@@ -166,6 +181,9 @@ export default {
           this.items = response.data.data.entities
           this.qtdRulesLocal = response.data.data.pagination.total
           this.commitShowQtdRules()
+
+          this.qtdPages = response.data.data.pagination.total_pages
+
           this.showTable = true
         })
     },

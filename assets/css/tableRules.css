@@ -71,15 +71,6 @@
 }
 
 
-.fotterTable{
-    justify-content: center;
-    padding: 8px;
-
-    background-color: var(--background-gray);
-
-    align-items: center;
-}
-
 .page-link{
     color: var(--primary-black);
 }
@@ -139,4 +130,58 @@
 }
 .textPTable{
     width: 30%;
+}
+
+
+/* Pagination */
+
+.fotterTable{
+    justify-content: center;
+    padding: 16px;
+
+    background-color: var(--background-gray);
+
+    align-items: center;
+
+    border-radius: 0px 0px 8px 8px;
+
+    padding-right: 8%;
+
+}
+
+.invoPagination p{
+    font-family: 'Manrope-Bold';
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--primary-black);
+
+    display: flex;
+    align-items: center;
+
+    margin-right: 16px;
+}
+
+.btnNavigate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    color: var(--primary-black);
+    border: var(--primary-black) solid 2px;
+    /* border: none; */
+    border-radius: 4px;
+    background: #fff;
+    margin-right: 16px;
+}
+.btnNavigate:last-child{
+    margin-right: 0px;
+}
+
+.btnNavigate:hover {
+    color: var(--primary-green);
+    border: var(--primary-green) solid 2px;
+    background: var(--background-gray);
+}
+.btnNavigate:hover *{
+    color: var(--primary-green);
 }
