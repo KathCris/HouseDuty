@@ -5,7 +5,7 @@
       <div class="flexSup">
         <img src="../assets/img/17-athletics.png" alt="">
         <div class="flexSup textBigNumbers">
-          <h4>14</h4>
+          <h4> {{ qtdRules }} </h4>
           <p>Regras da casa</p>
         </div>
       </div>
@@ -72,6 +72,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import TableRules from '../components/TableRules.vue'
 
 export default {
@@ -96,6 +97,9 @@ export default {
       // title
       titleModal: 'Criação das regras'
     }
+  },
+  computed: {
+    ...mapState(['qtdRules'])
   },
   methods: {
     checkFormValidity () {

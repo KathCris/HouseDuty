@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="flexSup invoButtonsTable">
-            <button v-b-modal.modal-edit-rule class="buttonTableEditDelete" @click="findRule(iten.id)">
+            <button v-b-modal.modal-edit-rule class="buttonTableEditDelete" @click.prevent="findRule(iten.id)">
               <span class="material-icons">
                 edit
               </span>
@@ -83,10 +83,15 @@
 </template>
 
 <script>
+
+import { mapState, mapActions } from 'vuex'
+
 export default {
   // name: 'TableRules',
   data () {
     return {
+      qtdRulesLocal: 0,
+      idRule: null,
       renderModal: false,
       showTable: false,
       ruleInEdit: null,
@@ -109,10 +114,14 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState(['qtdRules'])
+  },
   mounted () {
     this.listRules()
   },
   methods: {
+    ...mapActions(['showQtdRules']),
 
     async listRules () {
       await this.$axios.get('https://sys-dev.searchandstay.com/api/admin/house_rules', {
@@ -120,15 +129,23 @@ export default {
       })
         .then((response) => {
           this.items = response.data.data.entities
+          this.qtdRulesLocal = response.data.data.pagination.total
+          this.commitShowQtdRules()
           console.log('this.items', this.items)
+          console.log('this.qtdRulesLocal', this.qtdRulesLocal)
           this.showTable = true
         })
     },
 
-    async findRule (idRuleAtual) {
-      console.log('idRuleAtual', idRuleAtual)
+    commitShowQtdRules () {
+      this.$store.commit('showQtdRules', this.qtdRulesLocal)
+    },
 
-      await this.$axios.get(`https://sys-dev.searchandstay.com/api/admin/house_rules/${idRuleAtual}`, {
+    async findRule (idRuleAtual) {
+      this.idRule = idRuleAtual
+      console.log('this.idRule', this.idRule)
+
+      await this.$axios.get(`https://sys-dev.searchandstay.com/api/admin/house_rules/${this.idRule}`, {
         headers: { Authorization: `Bearer ${this.token}` }
       })
         .then((response) => {
@@ -160,12 +177,23 @@ export default {
       if (!this.checkFormValidity()) {
         return
       }
+      this.editRule()
       // Push the name to submitted names
-      this.submittedInput.push(this.teste)
+      // this.submittedInput.push(this.teste)
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-edit-rule')
       })
+    },
+
+    async editRule () {
+      await this.$axios.put(`https://sys-dev.searchandstay.com/api/admin/house_rules/${this.idRule}`, {
+        headers: { Authorization: `Bearer ${this.token}` }
+      })
+        .then((response) => {
+          console.log('this.ruleInEdit.name', this.ruleInEdit.name)
+          console.log('this.ruleInEdit.active', this.ruleInEdit.active)
+        })
     }
 
   }

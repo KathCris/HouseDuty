@@ -1,6 +1,7 @@
 export const state = () => ({
   teste: false,
-  statePage: ''
+  statePage: '',
+  qtdRules: 0
 })
 
 export const mutations = {
@@ -10,6 +11,10 @@ export const mutations = {
 
   changeStatePage (state, payload) {
     state.statePage = payload
+  },
+
+  showQtdRules (state, payload) {
+    state.qtdRules = payload
   }
 
 }
