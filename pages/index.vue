@@ -52,7 +52,7 @@
 </template>
 
 <script>
-
+import Cookie from 'js-cookie'
 export default {
   name: 'IndexPage',
 
@@ -67,13 +67,16 @@ export default {
   methods: {
 
     verifyLogin () {
-      console.log(this.form)
       if (this.form.email === 'house.duty@gmail.com' && this.form.password === '123') {
         const token = '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
-        console.log(token)
-        this.$cookies.get('token')
+        Cookie.set('token', token)
+        this.$router.push('/home')
+      } else if (this.form.email !== 'house.duty@gmail.com' && this.form.password === '123') {
+        alert('Email invalido, por favor insira o email cadastrado!')
+      } else if (this.form.email === 'house.duty@gmail.com' && this.form.password !== '123') {
+        alert('Senha invalida, por favor insira a senha correta!')
       } else {
-        alert('Email ou senha invalidos, por favor insira o correto!')
+        alert('Email e senha invalidos, por favor insira o login cadastrado!')
       }
     }
 
