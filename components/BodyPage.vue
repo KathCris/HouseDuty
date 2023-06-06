@@ -52,7 +52,7 @@
           >
             <b-form-input
               id="name-input"
-              v-model="name"
+              v-model="nameTeste2"
               :state="nameState"
               required
             />
@@ -81,7 +81,8 @@ export default {
 
   data () {
     return {
-      name: '',
+      testeRender: false,
+      nameTeste2: '',
       nameState: null,
       statusSelect: null,
       submittedNames: [],
@@ -103,7 +104,7 @@ export default {
       return valid
     },
     resetModal () {
-      this.name = ''
+      this.nameTeste2 = ''
       this.nameState = null
     },
     handleOk (bvModalEvent) {
@@ -118,7 +119,7 @@ export default {
         return
       }
       // Push the name to submitted names
-      this.submittedNames.push(this.name)
+      this.submittedNames.push(this.nameTeste2)
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing')
