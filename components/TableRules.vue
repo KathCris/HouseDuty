@@ -132,6 +132,7 @@
 
 <script>
 
+import Cookie from 'js-cookie'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -156,7 +157,7 @@ export default {
       currentPage: 1,
       travaBtnBack: true,
       travaBtnNext: false,
-      token: '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8',
+      token: '',
       // SELECT
       selected: null,
       options: [
@@ -170,10 +171,16 @@ export default {
     ...mapState(['qtdRules'])
   },
   mounted () {
+    this.getToken()
     this.listRules()
   },
   methods: {
     ...mapActions(['showQtdRules']),
+
+    getToken () {
+      this.token = Cookie.get('token')
+      console.log('this.token = tableRules', this.token)
+    },
 
     async listRules () {
       await this.$axios.get('https://sys-dev.searchandstay.com/api/admin/house_rules', {

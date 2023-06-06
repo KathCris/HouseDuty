@@ -80,6 +80,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import Cookie from 'js-cookie'
 import TableRules from '../components/TableRules.vue'
 
 export default {
@@ -103,13 +104,21 @@ export default {
       ],
       // title
       titleModal: 'Criação das regras',
-      token: '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
+      token: ''
     }
   },
   computed: {
     ...mapState(['qtdRules'])
   },
+  mounted () {
+    this.getToken()
+  },
   methods: {
+
+    getToken () {
+      this.token = Cookie.get('token')
+      console.log('this.token', this.token)
+    },
 
     checkFormValidity () {
       const validState = this.$refs.form.checkValidity()

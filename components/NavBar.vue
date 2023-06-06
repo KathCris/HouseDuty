@@ -35,7 +35,7 @@
           </span>
           Settings
         </button>
-        <button class="flexSup buttonNavBar">
+        <button class="flexSup buttonNavBar" @click="logout()">
           <span class="material-icons">
             logout
           </span>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import Cookie from 'js-cookie'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -63,6 +64,15 @@ export default {
 
     changePage (pageActual) {
       this.$store.commit('changeStatePage', pageActual)
+    },
+
+    logout () {
+      if (confirm('Tem certeza que deseja sair?')) {
+        Cookie.remove('token')
+        this.$router.push('/')
+      } else {
+        return 'cancel'
+      }
     }
   }
 }
