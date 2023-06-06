@@ -63,7 +63,14 @@
             invalid-feedback="Campo obrigatorio"
             :state="statusSelect"
           >
-            <b-form-select v-model="selectedActive" :options="options" size="sm" class="mt-3" />
+            <b-form-select
+              v-model="selectedActive"
+              :options="options"
+              size="sm"
+              class="mt-3"
+              :state="statusSelect"
+              required
+            />
           </b-form-group>
         </form>
       </b-modal>
@@ -105,13 +112,15 @@ export default {
   methods: {
 
     checkFormValidity () {
-      const valid = this.$refs.form.checkValidity()
-      this.nameState = valid
-      return valid
+      const validState = this.$refs.form.checkValidity()
+      this.nameState = validState
+      this.statusSelect = validState
+      return validState
     },
     resetModal () {
       this.nameRule = ''
       this.nameState = null
+      this.statusSelect = null
     },
     handleOk (bvModalEvent) {
       bvModalEvent.preventDefault()
@@ -122,12 +131,15 @@ export default {
         return
       }
 
-      alert('Tem certeza que deseja criar uma regra?')
-      this.createRule()
+      if (confirm('Tem certeza que deseja criar uma regra?')) {
+        this.createRule()
 
-      this.$nextTick(() => {
-        this.$bvModal.hide('modal-prevent-closing')
-      })
+        this.$nextTick(() => {
+          this.$bvModal.hide('modal-prevent-closing')
+        })
+      } else {
+        return 'cancel'
+      }
     },
     async createRule () {
       const data = {
@@ -140,7 +152,12 @@ export default {
         headers: { Authorization: `Bearer ${this.token}` }
       })
         .then((response) => {
-          window.location.reload()
+          try {
+            alert('Regra cadastrada com sucesso!')
+            window.location.reload()
+          } catch (error) {
+            alert('Ocorreu um erro! :(')
+          }
         })
     }
   }

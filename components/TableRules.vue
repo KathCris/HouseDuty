@@ -31,7 +31,7 @@
                 edit
               </span>
             </button>
-            <button class="buttonTableEditDelete">
+            <button v-b-modal.modal-1 class="buttonTableEditDelete" @click.prevent="findDeleteRules(iten.id)">
               <span class="material-icons">
                 delete
               </span>
@@ -44,7 +44,7 @@
       <b-pagination v-model="currentPage" pills :total-rows="rows" style="margin-bottom: 0px!important;" />
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL EDICAO -->
     <div v-if="renderModal">
       <b-modal
         id="modal-edit-rule"
@@ -74,11 +74,45 @@
             invalid-feedback="Campo obrigatorio"
             :state="statusSelect"
           >
-            <b-form-select v-model="ruleInEdit.active" :options="options" size="sm" class="mt-3" />
+            <b-form-select
+              v-model="ruleInEdit.active"
+              :options="options"
+              size="sm"
+              class="mt-3"
+              :state="statusSelect"
+              required
+            />
           </b-form-group>
         </form>
       </b-modal>
     </div>
+
+    <!-- MODAL DE EXCLUSAO -->
+    <b-modal id="modal-1" title="Excluir regra">
+      <p class="my-4">
+        Tem certeza que deseja excluir essa regra?
+      </p>
+      <template #modal-footer>
+        <div class="w-100">
+          <b-button
+            variant="danger"
+            size="sm"
+            class="float-right"
+            @click="deleteRule()"
+          >
+            Excluir
+          </b-button>
+          <b-button
+            style="margin-right: 16px;"
+            size="sm"
+            class="float-right"
+            @click="$bvModal.hide('modal-1')"
+          >
+            Cancelar
+          </b-button>
+        </div>
+      </template>
+    </b-modal>
   </div>
 </template>
 
@@ -92,6 +126,7 @@ export default {
     return {
       qtdRulesLocal: 0,
       idRule: null,
+      idDeleteRule: null,
       renderModal: false,
       showTable: false,
       ruleInEdit: null,
@@ -131,8 +166,6 @@ export default {
           this.items = response.data.data.entities
           this.qtdRulesLocal = response.data.data.pagination.total
           this.commitShowQtdRules()
-          console.log('this.items', this.items)
-          console.log('this.qtdRulesLocal', this.qtdRulesLocal)
           this.showTable = true
         })
     },
@@ -143,15 +176,12 @@ export default {
 
     async findRule (idRuleAtual) {
       this.idRule = idRuleAtual
-      console.log('this.idRule', this.idRule)
 
       await this.$axios.get(`https://sys-dev.searchandstay.com/api/admin/house_rules/${this.idRule}`, {
         headers: { Authorization: `Bearer ${this.token}` }
       })
         .then((response) => {
-          console.log(response)
           this.ruleInEdit = response.data.data
-          console.log('this.ruleInEdit', this.ruleInEdit)
           this.renderModal = true
         })
     },
@@ -160,39 +190,68 @@ export default {
     checkFormValidity () {
       const valid = this.$refs.form.checkValidity()
       this.inputState = valid
+      this.statusSelect = valid
       return valid
     },
     resetModal () {
-      this.teste = ''
       this.inputState = null
+      this.statusSelect = null
     },
     handleOk (bvModalEvent) {
-      // Prevent modal from closing
       bvModalEvent.preventDefault()
-      // Trigger submit handler
       this.handleSubmit()
     },
     handleSubmit () {
-      // Exit when the form isn't valid
       if (!this.checkFormValidity()) {
         return
       }
-      this.editRule()
-      // Push the name to submitted names
-      // this.submittedInput.push(this.teste)
-      // Hide the modal manually
-      this.$nextTick(() => {
-        this.$bvModal.hide('modal-edit-rule')
-      })
+
+      if (confirm('Tem certeza que deseja editar essa regra?')) {
+        this.editRule()
+
+        this.$nextTick(() => {
+          this.$bvModal.hide('modal-edit-rule')
+        })
+      } else {
+        return 'cancel'
+      }
     },
 
     async editRule () {
-      await this.$axios.put(`https://sys-dev.searchandstay.com/api/admin/house_rules/${this.idRule}`, {
+      const data = {
+        house_rules: {
+          name: this.ruleInEdit.name,
+          active: this.ruleInEdit.active
+        }
+      }
+      await this.$axios.put(`https://sys-dev.searchandstay.com/api/admin/house_rules/${this.idRule}`, data, {
         headers: { Authorization: `Bearer ${this.token}` }
       })
         .then((response) => {
-          console.log('this.ruleInEdit.name', this.ruleInEdit.name)
-          console.log('this.ruleInEdit.active', this.ruleInEdit.active)
+          try {
+            alert('Regra editada com sucesso!')
+            window.location.reload()
+          } catch (error) {
+            alert('Ocorreu um erro! :(')
+          }
+        })
+    },
+
+    findDeleteRules (idDeleteRuleActual) {
+      this.idDeleteRule = idDeleteRuleActual
+    },
+
+    async deleteRule () {
+      await this.$axios.delete(`https://sys-dev.searchandstay.com/api/admin/house_rules/${this.idDeleteRule}`, {
+        headers: { Authorization: `Bearer ${this.token}` }
+      })
+        .then((response) => {
+          try {
+            alert('Regra excluida com sucesso!')
+            window.location.reload()
+          } catch (error) {
+            alert('Ocorreu um erro! :(')
+          }
         })
     }
 
